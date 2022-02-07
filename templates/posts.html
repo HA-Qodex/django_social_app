@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Posts
+{% endblock title %}
+{% block content %}
+    {% for t in posts %}
+        <div class="card" style="padding: 10px; margin: 10px; background-color: rgba(234,230,230,0.72)">
+            <div class="media">
+                <div class="media-body">
+                    <div style="margin-bottom: 10px">
+                    <img class="mr-3" src="..." alt="image">
+                    <a href="#" style="text-decoration: none; color: black">{{ t.author }}</a>
+                    </div>
+                    <a href="#" style="text-decoration: none; color: black; text-align: justify"><h5
+                            class="mt-0">{{ t.title }}</h5></a>
+                    <p style="color: rgba(0,0,0,0.73)">{{ t.content }}</p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock content %}
