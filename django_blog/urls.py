@@ -18,10 +18,17 @@ from django.urls import path, include
 from user_app.views import *
 from django.contrib.auth import views as auth_view
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('blog_app.urls')),
     path('register/', Registration.as_view(), name="register"),
     path('login/', auth_view.LoginView.as_view(template_name="login.html"), name='login'),
-    path('logout/', auth_view.LogoutView.as_view(), name='logout')
+    path('logout/', auth_view.LogoutView.as_view(), name='logout'),
+    path('profile/', Profile.as_view(), name='profile')
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

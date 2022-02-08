@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class Registration(View):
@@ -15,3 +16,8 @@ class Registration(View):
             return redirect("/")
         else:
             return redirect("register")
+
+
+class Profile(LoginRequiredMixin, View):
+    def get(self, request):
+        return render(request, 'profile.html')
